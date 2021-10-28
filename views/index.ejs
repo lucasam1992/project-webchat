@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Webchat Trybe</title>
+  </head>
+  <body>
+    <h1>Webchat Random</h1>
+    <ul id="message"></ul>
+    <form action="">
+        <input id="messageIn" autocomplete="off" /><button>Send</button>
+    </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // fui obrigado a por esse script aqui dentro. Não sei pq, recebia a msg not found 404
+    // mesmo tendo alterado o link do script diversas vezes
+
+    const socket = window.io();
+    const nickname = ''; //apenas para passar no req 1 - Arrumarei no req 2
+
+    const form = document.querySelector('form');
+    const inputMessage = document.querySelector('#messageIn');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const chatMessage = inputMessage.value;
+        socket.emit('message', {nickname, chatMessage});
+        inputMessage.value = '';
+        return false;
+    });
+
+    const createMessage = (message) => {
+        const messagesUl = document.querySelector('#message');
+        const li = document.createElement('li');
+        li.innerText = message;
+        messagesUl.appendChild(li);
+    };
+
+    socket.on('message', (message) => createMessage(message));
+  </script>
+  </body>
+</html>
