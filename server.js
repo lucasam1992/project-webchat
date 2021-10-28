@@ -15,13 +15,13 @@ const io = require('socket.io')(http, {
     },
 });
 
-const chatControlers = require('./controllers/chatController');
-
 app.use(cors());
 
 require('./sockets/chat')(io);
 
-app.get('/', chatControlers.initialPageChat);
+app.get('/', (req, res) => {
+    res.status(200).render(`${__dirname}/views/index.ejs`)
+});
 
 http.listen(3000, () => {
     console.log('Conectado na porta 3000');
