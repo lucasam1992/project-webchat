@@ -20,7 +20,7 @@ app.use(cors());
 require('./sockets/chat')(io);
 
 app.get('/', (req, res) => {
-    res.status(200).render(`${__dirname}/views/index.ejs`)
+    res.status(200).render(`${__dirname}/views/index.ejs`);
 });
 
 http.listen(3000, () => {
