@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Webchat Trybe</title>
+  </head>
+  <body>
+    <header>
+      <h1>Webchat Random</h1>
+    </header>
+
+    <section>
+      <section>
+          <input 
+            data-testid="nickname-box"
+            type="text"
+            id="name"
+            placeholder="Insert your Nickname"
+          />
+          <button
+            type="button"
+            id="btn-nickname"
+            data-testid="nickname-button"
+          >Save</button>
+      </section>
+      
+      <aside>
+        <ul id= "id-user"></ul>
+      </aside>
+      <section>  
+        <ul id="message"></ul>
+      </section> 
+      <section>
+        <form action="">
+          <input 
+            id="messageIn" 
+            autocomplete="off" 
+            data-testid="message-box"
+            type="text"
+            placeholder="Enter a new message"
+          />
+            <button
+              data-testid="send-button"
+            >Send</button>
+        </form>
+      </section>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="./js/chat.js"></script>      
+    </section>
+  </body>
+</html>
