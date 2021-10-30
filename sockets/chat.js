@@ -8,10 +8,14 @@ const currentDate = `${data.getDate()}-${data.getMonth() + 1}-${data.getFullYear
 const currentHour = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
 
 module.exports = (io) => io.on('connection', (socket) => {
- //   socket.broadcast.emit('serverMessage', `Usuario ${socket.id} acabou de entrar`);
+ //   socket.broadcast.emit('users', `Usuario ${socket.id} acabou de entrar`);
+
+    io.emit('users', `${socket.id.slice(0, 16)}`);
 
     socket.on('message', ({ nickname, chatMessage }) => {
-        console.log(`${currentDate} ${currentHour} ${nickname}: ${chatMessage}`);
-        io.emit('message', `${currentDate} ${currentHour} - ${nickname}: ${chatMessage}`); // joga a mensgaeem pro front
+        console.log(`${currentDate} ${currentHour} ${!nickname 
+            ? socket.id.slice(0, 16) : nickname}: ${chatMessage}`);
+        io.emit('message', `${currentDate} ${currentHour} - ${!nickname 
+            ? socket.id.slice(0, 16) : nickname}: ${chatMessage}`); // joga a mensgaeem pro front        
     });
 });
