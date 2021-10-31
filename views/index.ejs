@@ -27,7 +27,13 @@
         <ul id= "id-user"></ul>
       </aside>
       <section>  
-        <ul id="message"></ul>
+        <ul id="message">
+          <% allDatas.forEach((allData) => { %>
+            <li data-testid="message">
+              <%= `${allData.userInfo.timestamp} - ${allData.userInfo.nickname}: ${allData.userInfo.message}` %>
+            </li>
+        <% }) %>
+        </ul>
       </section> 
       <section>
         <form action="">

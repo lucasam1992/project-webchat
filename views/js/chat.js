@@ -41,6 +41,6 @@
     userLi.dataset.testid = 'online-user';
     userField.appendChild(userLi); 
   };
- 
+
 socket.on('message', (message) => createMessage(message));
 socket.on('users', (user) => createNickname(user));
