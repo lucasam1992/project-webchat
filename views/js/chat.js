@@ -7,13 +7,13 @@
   const inputMessage = document.querySelector('#messageIn');
   const inputNickname = document.querySelector('#name');
   const btnNickname = document.querySelector('#btn-nickname');
+  const userField = document.querySelector('#id-user');
         
   form.addEventListener('submit', (e) => {
       e.preventDefault();
       const chatMessage = inputMessage.value;
       socket.emit('message', { nickname, chatMessage });
       inputMessage.value = '';
-      return false;
   });
         
   const createMessage = (message) => {
@@ -28,19 +28,45 @@
           
   btnNickname.addEventListener('click', () => {
     const nameUser = inputNickname.value;
+    nickname = nameUser;
     socket.emit('users', nameUser);
     inputNickname.value = '';
-    nickname = nameUser;
-    return false;
   });
 
   const createNickname = (nicknames) => {
-    const userField = document.querySelector('#id-user');
     const userLi = document.createElement('li');
     userLi.innerText = nicknames;
     userLi.dataset.testid = 'online-user';
     userField.appendChild(userLi); 
   };
 
+  const listOnlineUsers = (onlineUsers) => {
+    userField.innerHTML = '';
+    
+    if (!nickname) { 
+      nickname = onlineUsers[onlineUsers.length - 1];
+    }
+    createNickname(nickname);
+    const userOutOfRange = onlineUsers.filter((onlineUser) => onlineUser !== nickname);
+    userOutOfRange.forEach((element) => {
+      createNickname(element);
+    });
+    
+    /*
+    const listOfUsers = document.querySelector('#id-user');
+    listOfUsers.innerText = '';
+    onlineUser.forEach((element) => {
+      createNickname(element);
+    });
+    */
+  };
+
+/*
+  window.onbeforeunload = () => {
+    socket.disconnect();
+  };
+*/
+
 socket.on('message', (message) => createMessage(message));
-socket.on('users', (user) => createNickname(user));
+socket.on('users', (user) => listOnlineUsers(user));
+socket.on('listOfUsersOnline', (onlineUsers) => listOnlineUsers(onlineUsers));

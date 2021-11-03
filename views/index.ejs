@@ -6,8 +6,9 @@
   <body>
     <header>
       <h1>Webchat Random</h1>
+      <ul id='id-user'></ul>
     </header>
-
+    
     <section>
       <section>
           <input 
@@ -22,10 +23,7 @@
             data-testid="nickname-button"
           >Save</button>
       </section>
-      
-      <aside>
-        <ul id= "id-user"></ul>
-      </aside>
+    
       <section>  
         <ul id="message">
           <% allDatas.forEach((allData) => { %>
