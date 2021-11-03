@@ -51,14 +51,6 @@
     userOutOfRange.forEach((element) => {
       createNickname(element);
     });
-    
-    /*
-    const listOfUsers = document.querySelector('#id-user');
-    listOfUsers.innerText = '';
-    onlineUser.forEach((element) => {
-      createNickname(element);
-    });
-    */
   };
 
 /*
