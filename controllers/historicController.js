@@ -5,6 +5,12 @@ const getAll = async () => {
     return talkers;
 };
 
+const increaseHistoric = async (userInfo) => {
+    const historics = await historicModel.increaseHistoric(userInfo);
+    return historics;
+};
+
 module.exports = {
     getAll,
+    increaseHistoric,
 };

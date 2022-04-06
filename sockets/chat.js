@@ -2,7 +2,7 @@
 // https://www.devmedia.com.br/date-javascript-trabalhando-com-data-e-hora-em-js/37222
 // https://blog.betrybe.com/javascript/javascript-date-format/#1
 
-const historicModel = require('../models/historicModel');
+const historicController = require('../controllers/historicController');
 
 const data = new Date();
 
@@ -26,7 +26,7 @@ module.exports = (io) => io.on('connection', (socket) => {
     const dataAux = `${currentDate} ${currentHour}`;
     const nicknameAux = `${!nickname ? socket.id.slice(0, 16) : nickname}`;
       io.emit('message', `${dataAux} - ${nicknameAux}: ${chatMessage}`); // joga a mensgaeem pro front  
-      await historicModel.increaseHistoric({ 
+      await historicController.increaseHistoric({ 
          timestamp: dataAux, nickname: nicknameAux, message: chatMessage,
       });       
   });
