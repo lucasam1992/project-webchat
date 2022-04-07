@@ -2,15 +2,15 @@
 <html>
   <head>
     <title>Webchat Trybe</title>
+    <link rel="stylesheet" href="./css/style.css"/>
   </head>
   <body>
     <header>
       <h1>Webchat Random</h1>
-      <ul id='id-user'></ul>
     </header>
     
     <section>
-      <section>
+      <section class="class-nickname">
           <input 
             data-testid="nickname-box"
             type="text"
@@ -23,8 +23,12 @@
             data-testid="nickname-button"
           >Save</button>
       </section>
+
+      <div class="class-names">
+        <ul id='id-user'></ul>
+      </div>
     
-      <section>  
+      <section class="class-messages">  
         <ul id="message">
           <% allDatas.forEach((allData) => { %>
             <li data-testid="message">
@@ -33,8 +37,8 @@
         <% }) %>
         </ul>
       </section> 
-      <section>
-        <form action="">
+      <section class="class-forms">
+        <form action="" class="class-form-form">
           <input 
             id="messageIn" 
             autocomplete="off" 
@@ -44,6 +48,7 @@
           />
             <button
               data-testid="send-button"
+              id="btn-message-send"
             >Send</button>
         </form>
       </section>
