@@ -20,7 +20,7 @@ O projeto consiste em um chat online, onde poderá existir um número indetermin
 # Rodando o Projeto Localmente
 
 1° `https://github.com/lucasam1992/project-webchat.git` - Clone o repositório para sua máquina <br />
-2° `cd project-webchat`Entre na pasta do repositório clonado <br />
+2° `cd project-webchat` - Entre na pasta do repositório clonado <br />
 3° `npm install` - Instale as dependências <br />
 4° `npm run dev` - Execute o servidor <br />
 5° `http://localhost:3000` - Acesse o chat <br />
